@@ -1,1 +1,27 @@
 
+package com.company;
+
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class zuoye {
+    public static void main(String[] args) {
+        HashMap<String, String> user = new HashMap<>();
+        Scanner scan = new Scanner(System.in);
+
+        user.put("Msdffx@Gmail", "2323145");
+        user.put("xyz@jjjmail", "463252");
+        user.put("Chen@qq", "4625855");
+
+        while (scan.hasNextLine()) {
+            String temp = scan.nextLine();
+            for (String key : user.keySet()) {
+                if (temp==key){
+                    System.out.println(key + ":" + user.get(key));
+                }
+                else
+                    System.out.println("No Search");
+            }
+        }
+    }
+}
