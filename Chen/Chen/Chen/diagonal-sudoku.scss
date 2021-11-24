@@ -1,0 +1,13 @@
+@import "sudoku.scss";
+
+%diagonal {
+    background-color: rgb(250, 250, 249);
+}
+
+table.sudoku {
+    @for $i from 1 through 9 {
+        tr:nth-child(#{$i}) > td:nth-child(#{$i}), tr:nth-child(#{$i}) > td:nth-child(#{10 - $i}){
+            @extend %diagonal;
+        }
+    }
+}

@@ -1,0 +1,51 @@
+body{
+    margin: 0;
+}
+
+
+
+#grid >div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#grid>div::before{
+    content: attr(id);
+}
+
+#grid{
+    display: grid;
+    grid-template-areas:"A B B C"
+                        "A E F C"
+                        "A D D C" ;
+    height: 100vh;
+    grid-template-rows: 20% 50% 25%;
+    grid-template-columns: 25% 25% 25% 25%;                    
+}
+
+#pink {background-color: pink;
+      grid-area: A ;
+}
+#limegreen{
+    background-color: green;
+    grid-area: B;
+}
+#lavender{
+    background-color: lavender;
+    grid-area: C;
+}
+#gold{
+    background-color: gold;
+    grid-area: D;
+}
+
+#plum{
+    background-color: plum;
+    grid-area: E;
+}
+#coral{
+    background-color: coral;
+    grid-area: F;
+}
