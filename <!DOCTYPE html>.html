@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+    initial scale=1,shrink=1,shrink-to-fit=no">
+    <title>Countries</title>
+    <script src="http://code.jquery.com/jquery-3,6,0,js"></script>
+
+</head>
+<body>
+    <div>
+        <main>
+            <h1>
+            <div>
+                <table>
+                    <thead>
+                        <ty>
+                            <th scope="col">#</th>
+                            <th scope="col">Country</th>
+                            <th scope="col">Population</th>
+                        </ty>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>    
+            </h1>
+        </main>
+        <footer>Data from REST Countries</footer>
+    </div>
+    <script>
+        $.getJSON("http://restcountries.com/v3.1/region/",function(
+        countries) {
+            countries.sort(function(a, b){
+                return b.population - a.population;
+            });
+            $.each(countries,function(i,country){
+                const row=<tr>
+                <th scope ="row">$(i+1)</th>
+                <td> $(countries.name.common)</td>
+                <td>$(countries.population.toLocalString)("en-US")</td>
+                </tr>;
+                
+                console.log(row);
+                $("today").append(row);
+                
+            })
+        })
+    </script>
+    
+        
+</body>
+</html>
