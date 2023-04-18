@@ -1,0 +1,52 @@
+public class CoinSpawner : MonoBehaviour
+{
+    public GameObject coinPrefab;
+    public int numCoins = 5;
+
+    private void Start()
+    {
+        for (int i = 0; i < numCoins; i++)
+        {
+            Vector3 position = new Vector3(Random.Range(-5f, 5f), 0.5f, Random.Range(-5f, 5f));
+            Instantiate(coinPrefab, transform.position + position, Quaternion.identity);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+public class CarMovement : MonoBehaviour
+{
+    public float initialSpeed = 5f;
+    public float speedIncrement = 0.5f;
+    private float currentSpeed;
+
+    private void Start()
+    {
+        currentSpeed = initialSpeed;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            currentSpeed += speedIncrement;
+            other.gameObject.SetActive(false);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+
+        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+
+        GetComponent<Rigidbody>().AddForce(movement * currentSpeed);
+    }
+}
